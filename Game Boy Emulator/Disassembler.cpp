@@ -47,12 +47,4 @@ int gbDisassembler(const char* fileName) {
 
 }
 
-int main()
-{
-	const char* tetrisPath = "C:\\Users\\Justyn Duthler\\Desktop\\Game-Boy-Emulator\\Roms\\Tetris.gb";
-	if (gbDisassembler(tetrisPath)) {
-		return 0;
-	} else {
-		return 1;
-	}
-}
+

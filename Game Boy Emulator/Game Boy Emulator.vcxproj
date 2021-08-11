@@ -139,7 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Game Boy Emulator.cpp" />
+    <ClCompile Include="Testing.cpp" />
     <ClCompile Include="Disassembler.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
