@@ -142,6 +142,9 @@
     <ClCompile Include="Testing.cpp" />
     <ClCompile Include="Disassembler.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Disassembler.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
