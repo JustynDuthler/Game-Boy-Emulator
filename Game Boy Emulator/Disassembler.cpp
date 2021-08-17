@@ -152,7 +152,139 @@ int gbDisassembler(const char* fileName) {
 						logFile << "LD A, d8\n"; break;
 					case 0x3F: // CCF
 						logFile << "CCF\n"; break;
+
+					case 0x40: // LD B, B
+						logFile << "LD B, B\n"; break;
+					case 0x41: // LD B, C
+						logFile << "LD B, C\n"; break;
+					case 0x42: // LD B, D
+						logFile << "LD B, D\n"; break;
+					case 0x43: // LD B, E
+						logFile << "LD B, E\n"; break;
+					case 0x44: // LD B, H
+						logFile << "LD B, H\n"; break;
+					case 0x45: // LD B, L
+						logFile << "LD B, L\n"; break;
+					case 0x46: // LD B, (HL)
+						logFile << "LD B, (HL)\n"; break;
+					case 0x47: // LD B, A 
+						logFile << "LD B, A\n"; break;
+					case 0x48: // LD C, B
+						logFile << "LD C, B\n"; break;
+					case 0x49: // LD C, C
+						logFile << "LD C, C\n"; break;
+					case 0x4A: // LD C, D
+						logFile << "LD C, D\n"; break;
+					case 0x4B: // LD C, E
+						logFile << "LD C, E\n"; break;
+					case 0x4C: // LD C, H
+						logFile << "LD C, H\n"; break;
+					case 0x4D: // LD C, L
+						logFile << "LD C, L\n"; break;
+					case 0x4E: // LD C, (HL)
+						logFile << "LD C, (HL)\n"; break;
+					case 0x4F: // LD C, A
+						logFile << "LD C, A\n"; break;
+
+					case 0x50: // LD D, B
+						logFile << "LD D, B\n"; break;
+					case 0x51: // LD D, C
+						logFile << "LD D, C\n"; break;
+					case 0x52: // LD D, D
+						logFile << "LD D, D\n"; break;
+					case 0x53: // LD D, E
+						logFile << "LD D, E\n"; break;
+					case 0x54: // LD D, H
+						logFile << "LD D, H\n"; break;
+					case 0x55: // LD D, L
+						logFile << "LD D, L\n"; break;
+					case 0x56: // LD D, (HL)
+						logFile << "LD D, (HL)\n"; break;
+					case 0x57: // LD D, A 
+						logFile << "LD D, A\n"; break;
+					case 0x58: // LD E, B
+						logFile << "LD E, B\n"; break;
+					case 0x59: // LD E, C
+						logFile << "LD E, C\n"; break;
+					case 0x5A: // LD E, D
+						logFile << "LD E, D\n"; break;
+					case 0x5B: // LD E, E
+						logFile << "LD E, E\n"; break;
+					case 0x5C: // LD E, H
+						logFile << "LD E, H\n"; break;
+					case 0x5D: // LD E, L
+						logFile << "LD E, L\n"; break;
+					case 0x5E: // LD E, (HL)
+						logFile << "LD E, (HL)\n"; break;
+					case 0x5F: // LD E, A
+						logFile << "LD E, A\n"; break;
+
+					case 0x60: // LD H, B
+						logFile << "LD H, B\n"; break;
+					case 0x61: // LD H, C
+						logFile << "LD H, C\n"; break;
+					case 0x62: // LD H, D
+						logFile << "LD H, D\n"; break;
+					case 0x63: // LD H, E
+						logFile << "LD H, E\n"; break;
+					case 0x64: // LD H, H
+						logFile << "LD H, H\n"; break;
+					case 0x65: // LD H, L
+						logFile << "LD H, L\n"; break;
+					case 0x66: // LD H, (HL)
+						logFile << "LD H, (HL)\n"; break;
+					case 0x67: // LD H, A 
+						logFile << "LD H, A\n"; break;
+					case 0x68: // LD L, B
+						logFile << "LD L, B\n"; break;
+					case 0x69: // LD L, C
+						logFile << "LD L, C\n"; break;
+					case 0x6A: // LD L, D
+						logFile << "LD L, D\n"; break;
+					case 0x6B: // LD L, E
+						logFile << "LD L, E\n"; break;
+					case 0x6C: // LD L, H
+						logFile << "LD L, H\n"; break;
+					case 0x6D: // LD L, L
+						logFile << "LD L, L\n"; break;
+					case 0x6E: // LD L, (HL)
+						logFile << "LD L, (HL)\n"; break;
+					case 0x6F: // LD L, A
+						logFile << "LD C, A\n"; break;
 					
+					case 0x70: // LD (HL), B
+						logFile << "LD (HL), B\n"; break;
+					case 0x71: // LD (HL), C
+						logFile << "LD (HL), C\n"; break;
+					case 0x72: // LD (HL), D
+						logFile << "LD (HL), D\n"; break;
+					case 0x73: // LD (HL), E
+						logFile << "LD (HL), E\n"; break;
+					case 0x74: // LD (HL), H
+						logFile << "LD (HL), H\n"; break;
+					case 0x75: // LD (HL), L
+						logFile << "LD (HL), L\n"; break;
+					case 0x76: // HALT
+						logFile << "HALT\n"; break;
+					case 0x77: // LD (HL), A 
+						logFile << "LD (HL), A\n"; break;
+					case 0x78: // LD A, B
+						logFile << "LD A, B\n"; break;
+					case 0x79: // LD A, C
+						logFile << "LD A, C\n"; break;
+					case 0x7A: // LD A, D
+						logFile << "LD A, D\n"; break;
+					case 0x7B: // LD A, E
+						logFile << "LD A, E\n"; break;
+					case 0x7C: // LD A, H
+						logFile << "LD A, H\n"; break;
+					case 0x7D: // LD A, L
+						logFile << "LD A, L\n"; break;
+					case 0x7E: // LD A, (HL)
+						logFile << "LD A, (HL)\n"; break;
+					case 0x7F: // LD A, A
+						logFile << "LD C, A\n"; break;
+
 					case 0xc3: // JP NZ, a16
 						logFile << "JP NZ, a16\n"; break;
 					default:
