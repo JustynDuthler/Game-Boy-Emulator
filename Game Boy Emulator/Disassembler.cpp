@@ -285,8 +285,270 @@ int gbDisassembler(const char* fileName) {
 					case 0x7F: // LD A, A
 						logFile << "LD C, A\n"; break;
 
-					case 0xc3: // JP NZ, a16
+					case 0x80: // ADD A, B
+						logFile << "ADD A, B\n"; break;
+					case 0x81: // ADD A, C
+						logFile << "ADD A, C\n"; break;
+					case 0x82: // ADD A, D
+						logFile << "ADD A, D\n"; break;
+					case 0x83: // ADD A, E
+						logFile << "ADD A, E\n"; break;
+					case 0x84: // ADD A, H
+						logFile << "ADD A, H\n"; break;
+					case 0x85: // ADD A, L
+						logFile << "ADD A, L\n"; break;
+					case 0x86: // ADD A, (HL)
+						logFile << "ADD A, (HL)\n"; break;
+					case 0x87: // ADD A, A 
+						logFile << "ADD A, A\n"; break;
+					case 0x88: // ADC A, B
+						logFile << "ADC A, B\n"; break;
+					case 0x89: // ADC A, C
+						logFile << "ADC A, C\n"; break;
+					case 0x8A: // ADC A, D
+						logFile << "ADC A, D\n"; break;
+					case 0x8B: // ADC A, E
+						logFile << "ADC A, E\n"; break;
+					case 0x8C: // ADC A, H
+						logFile << "ADC A, H\n"; break;
+					case 0x8D: // ADC A, L
+						logFile << "ADC A, L\n"; break;
+					case 0x8E: // ADC A, (HL)
+						logFile << "ADC, (HL)\n"; break;
+					case 0x8F: // ADC A, A
+						logFile << "ADC, A\n"; break;
+
+					case 0x90: // SUB B
+						logFile << "SUB B\n"; break;
+					case 0x91: // SUB C
+						logFile << "SUB C\n"; break;
+					case 0x92: // SUB D
+						logFile << "SUB D\n"; break;
+					case 0x93: // SUB E
+						logFile << "SUB E\n"; break;
+					case 0x94: // SUB H
+						logFile << "SUB H\n"; break;
+					case 0x95: // SUB L
+						logFile << "SUB L\n"; break;
+					case 0x96: // SUB (HL)
+						logFile << "SUB (HL)\n"; break;
+					case 0x97: // SUB A 
+						logFile << "SUB A\n"; break;
+					case 0x98: // SBC A, B
+						logFile << "SBC A, B\n"; break;
+					case 0x99: // SBC A, C
+						logFile << "SBC A, C\n"; break;
+					case 0x9A: // SBC A, D
+						logFile << "SBC A, D\n"; break;
+					case 0x9B: // SBC A, E
+						logFile << "SBC A, E\n"; break;
+					case 0x9C: // SBC A, H
+						logFile << "SBC A, H\n"; break;
+					case 0x9D: // SBC A, L
+						logFile << "SBC A, L\n"; break;
+					case 0x9E: // SBC A, (HL)
+						logFile << "SBC A, (HL)\n"; break;
+					case 0x9F: // SBC A, A
+						logFile << "SBC A, A\n"; break;
+
+					case 0xA0: // AND B
+						logFile << "AND B\n"; break;
+					case 0xA1: // AND C
+						logFile << "AND C\n"; break;
+					case 0xA2: // AND D
+						logFile << "AND D\n"; break;
+					case 0xA3: // AND E
+						logFile << "AND E\n"; break;
+					case 0xA4: // AND H
+						logFile << "SUB H\n"; break;
+					case 0xA5: // AND L
+						logFile << "AND L\n"; break;
+					case 0xA6: // AND (HL)
+						logFile << "AND (HL)\n"; break;
+					case 0xA7: // AND A 
+						logFile << "AND A\n"; break;
+					case 0xA8: // XOR B
+						logFile << "XOR B\n"; break;
+					case 0xA9: // XOR C
+						logFile << "XOR C\n"; break;
+					case 0xAA: // XOR D
+						logFile << "XOR D\n"; break;
+					case 0xAB: // XOR E
+						logFile << "XOR E\n"; break;
+					case 0xAC: // XOR H
+						logFile << "XOR H\n"; break;
+					case 0xAD: // XOR L
+						logFile << "XOR L\n"; break;
+					case 0xAE: // XOR (HL)
+						logFile << "XOR (HL)\n"; break;
+					case 0xAF: // XOR A
+						logFile << "XOR A\n"; break;
+
+					case 0xB0: // OR B
+						logFile << "OR B\n"; break;
+					case 0xB1: // OR C
+						logFile << "OR C\n"; break;
+					case 0xB2: // OR D
+						logFile << "OR D\n"; break;
+					case 0xB3: // OR E
+						logFile << "OR E\n"; break;
+					case 0xB4: // OR H
+						logFile << "OR H\n"; break;
+					case 0xB5: // OR L
+						logFile << "OR L\n"; break;
+					case 0xB6: // OR (HL)
+						logFile << "OR (HL)\n"; break;
+					case 0xB7: // OR A 
+						logFile << "OR A\n"; break;
+					case 0xB8: // CP B
+						logFile << "CP B\n"; break;
+					case 0xB9: // CP C
+						logFile << "CP C\n"; break;
+					case 0xBA: // CP D
+						logFile << "CP D\n"; break;
+					case 0xBB: // CP E
+						logFile << "CP E\n"; break;
+					case 0xBC: // CP H
+						logFile << "CP H\n"; break;
+					case 0xBD: // CP L
+						logFile << "CP L\n"; break;
+					case 0xBE: // CP (HL)
+						logFile << "CP (HL)\n"; break;
+					case 0xBF: // CP A
+						logFile << "CP A\n"; break;
+
+					case 0xC0: // RET NZ
+						logFile << "RET NZ\n"; break;
+					case 0xC1: // POP BC
+						logFile << "POP BC\n"; break;
+					case 0xC2: // JP NZ, a16
 						logFile << "JP NZ, a16\n"; break;
+					case 0xC3: // JP NZ, a16
+						logFile << "JP NZ, a16\n"; break;
+					case 0xC4: // CALL NZ, a16
+						logFile << "CALL NZ, a16\n"; break;
+					case 0xC5: // PUSH BC
+						logFile << "PUSH BC\n"; break;
+					case 0xC6: // ADD A, d8
+						logFile << "ADD A, d8\n"; break;
+					case 0xC7: // RST 0 
+						logFile << "RST 0\n"; break;
+					case 0xC8: // RET Z
+						logFile << "RET Z\n"; break;
+					case 0xC9: // RET
+						logFile << "RET\n"; break;
+					case 0xCA: // JP Z, a16
+						logFile << "JP Z, a16\n"; break;
+					case 0xCB: // 16-bit opcodes
+						logFile << "16-bit opcodes\n"; break;
+					case 0xCC: // CALL Z, a16
+						logFile << "CALL Z, a16\n"; break;
+					case 0xCD: // CALL a16
+						logFile << "CALL a16\n"; break;
+					case 0xCE: // ADC A, d8
+						logFile << "ADC A, d8\n"; break;
+					case 0xCF: // RST 1
+						logFile << "RST 1\n"; break;
+
+					case 0xD0: // RET NC
+						logFile << "RET NC\n"; break;
+					case 0xD1: // POP DE
+						logFile << "POP DE\n"; break;
+					case 0xD2: // JP NC, a16
+						logFile << "JP NC, a16\n"; break;
+					case 0xD3: // NO CODE
+						logFile << "NO CODE\n"; break;
+					case 0xD4: // CALL NC, a16
+						logFile << "CALL NC, a16\n"; break;
+					case 0xD5: // PUSH DE
+						logFile << "PUSH DE\n"; break;
+					case 0xD6: // SUB d8
+						logFile << "SUB d8\n"; break;
+					case 0xD7: // RST 2 
+						logFile << "RST 2\n"; break;
+					case 0xD8: // RET C
+						logFile << "RET C\n"; break;
+					case 0xD9: // RETI
+						logFile << "RETI\n"; break;
+					case 0xDA: // JP C, a16
+						logFile << "JP C, a16\n"; break;
+					case 0xDB: // NO CODE
+						logFile << "NO CODE\n"; break;
+					case 0xDC: // CALL C, a16
+						logFile << "CALL C, a16\n"; break;
+					case 0xDD: // NO CODE
+						logFile << "NO CODE\n"; break;
+					case 0xDE: // SBC A, d8
+						logFile << "SBC A, d8\n"; break;
+					case 0xDF: // RST 3
+						logFile << "RST 3\n"; break;
+
+					case 0xE0: // LD (a8), A
+						logFile << "LD (a8), A\n"; break;
+					case 0xE1: // POP HL
+						logFile << "POP HL\n"; break;
+					case 0xE2: // LD (C), A
+						logFile << "LD (C), A\n"; break;
+					case 0xE3: // NO CODE
+						logFile << "NO CODE\n"; break;
+					case 0xE4: // NO CODE
+						logFile << "NO CODE\n"; break;
+					case 0xE5: // PUSH HL
+						logFile << "PUSH HL\n"; break;
+					case 0xE6: // AND d8
+						logFile << "AND d8\n"; break;
+					case 0xE7: // RST 4 
+						logFile << "RST 4\n"; break;
+					case 0xE8: // ADD SP, s8
+						logFile << "ADD SP, s8\n"; break;
+					case 0xE9: // JP HL
+						logFile << "JP HL\n"; break;
+					case 0xEA: // LD (a16), A
+						logFile << "LD (a16), A\n"; break;
+					case 0xEB: // NO CODE
+						logFile << "NO CODE\n"; break;
+					case 0xEC: // NO CODE
+						logFile << "NO CODE\n"; break;
+					case 0xED: // NO CODE
+						logFile << "NO CODE\n"; break;
+					case 0xEE: // XOR d8
+						logFile << "XOR d8\n"; break;
+					case 0xEF: // RST 5
+						logFile << "RST 5\n"; break;
+
+					case 0xF0: // LD A, (a8)
+						logFile << "LD A, (a8)\n"; break;
+					case 0xF1: // POP AF
+						logFile << "POP AF\n"; break;
+					case 0xF2: // LD A, (C)
+						logFile << "LD A, (C)\n"; break;
+					case 0xF3: // DI
+						logFile << "DI\n"; break;
+					case 0xF4: // NO CODE
+						logFile << "NO CODE\n"; break;
+					case 0xF5: // PUSH AF
+						logFile << "PUSH AF\n"; break;
+					case 0xF6: // OR d8
+						logFile << "OR d8\n"; break;
+					case 0xF7: // RST 6 
+						logFile << "RST 6\n"; break;
+					case 0xF8: // LD HL, SP+s8
+						logFile << "LD HL, SP+s8\n"; break;
+					case 0xF9: // LD SP, HL
+						logFile << "LD SP. HL\n"; break;
+					case 0xFA: // LD A, (a16)
+						logFile << "LD A, (a16)\n"; break;
+					case 0xFB: // EI
+						logFile << "EI\n"; break;
+					case 0xFC: // NO CODE
+						logFile << "NO CODE\n"; break;
+					case 0xFD: // NO CODE
+						logFile << "NO CODE\n"; break;
+					case 0xFE: // CP d8
+						logFile << "CP d8\n"; break;
+					case 0xFF: // RST 7
+						logFile << "RST 7\n"; break;
+
 					default:
 						logFile << "\n"; break;
 				}
