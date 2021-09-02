@@ -18,140 +18,270 @@ int gbDisassembler(const char* fileName) {
 		// output memory into log file, trunc is called to clear any previous log
 		std::ofstream logFile("C:\\Users\\Justyn Duthler\\Desktop\\Game-Boy-Emulator\\logs\\disassemblerLog.txt", std::fstream::out | std::fstream::trunc);
 		if (logFile.is_open()) {
-			for (int i = 0; i < fileSize; i+=1) {
-				logFile << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[i]) << ": ";
-				switch (fileMem[i]) {
+			int pc = 0;	/* program counter, in real gameboy pc starts at 0x0100 */
+			while (pc < fileSize) {
+				logFile << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc]) << ": ";
+				switch (fileMem[pc]) {
 					case 0x00: // NOP
-						logFile << "NOP\n"; break;
+						logFile << "NOP\n"; 
+						pc++; 
+						break;
 					case 0x01: // LD BC, d16
-						logFile << "LD BC, d16\n"; break;
+						logFile << "LD BC, d16 -- d16 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 2]) << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 3; 
+						break;
 					case 0x02: // LD (BC), A
-						logFile << "LD (BC), A\n"; break;
+						logFile << "LD (BC), A\n"; 
+						pc++;
+						break;
 					case 0x03: // INC BC
-						logFile << "INC BC\n"; break;
+						logFile << "INC BC\n";
+						pc++;
+						break;
 					case 0x04: // INC B
-						logFile << "INC B\n"; break;
+						logFile << "INC B\n"; 
+						pc++;
+						break;
 					case 0x05: // DEC B
-						logFile << "DEC B\n"; break;
+						logFile << "DEC B\n"; 
+						pc++;
+						break;
 					case 0x06: // LD B, d8
-						logFile << "LD B, d8\n"; break;
+						logFile << "LD B, d8\n"; 
+						logFile << "LD BC, d16 -- d16 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 2;
+						break;
 					case 0x07: // RLCA 
-						logFile << "RLCA\n"; break;
+						logFile << "RLCA\n"; 
+						pc++;
+						break;
 					case 0x08: // LD (a16), SP
-						logFile << "LD (a16), SP\n"; break;
+						logFile << "LD (a16), SP -- SP = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 2]) << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 3;
+						break;
 					case 0x09: // ADD HL, BC
-						logFile << "ADD HL, BC\n"; break;
+						logFile << "ADD HL, BC\n"; 
+						pc++;
+						break;
 					case 0x0A: // LD A, (BC)
-						logFile << "LD A, (BC)\n"; break;
+						logFile << "LD A, (BC)\n"; 
+						pc++;
+						break;
 					case 0x0B: // DEC BC
-						logFile << "DEC BC\n"; break;
+						logFile << "DEC BC\n"; 
+						pc++;
+						break;
 					case 0x0C: // INC C
-						logFile << "INC C\n"; break;
+						logFile << "INC C\n";
+						pc++;
+						break;
 					case 0x0D: // DEC C
-						logFile << "DEC C\n"; break;
+						logFile << "DEC C\n";
+						pc++;
+						break;
 					case 0x0E: // LD C, d8
-						logFile << "LD C, d8\n"; break;
+						logFile << "LD C, d8 -- d8 = "<< std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n"; 
+						pc += 2;
+						break;
 					case 0x0F: // RRCA
-						logFile << "RRCA\n"; break;
+						logFile << "RRCA\n"; 
+						pc++;
+						break;
 
 					case 0x10: // STOP
-						logFile << "STOP\n"; break;
+						logFile << "STOP\n"; 
+						pc += 2;
+						break;
 					case 0x11: // LD DE, d16
-						logFile << "LD DE, d16\n"; break;
+						logFile << "LD DE, d16 -- d16 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 2]) << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 3;
+						break;
 					case 0x12: // LD (DE), A
-						logFile << "LD (DE), A\n"; break;
+						logFile << "LD (DE), A\n";
+						pc++;
+						break;
 					case 0x13: // INC DE
-						logFile << "INC DE\n"; break;
+						logFile << "INC DE\n"; 
+						pc++;
+						break;
 					case 0x14: // INC D
-						logFile << "INC D\n"; break;
+						logFile << "INC D\n"; 
+						pc++;
+						break;
 					case 0x15: // DEC D
-						logFile << "DEC D\n"; break;
+						logFile << "DEC D\n"; 
+						pc++;
+						break;
 					case 0x16: // LD D, d8
-						logFile << "LD D, d8\n"; break;
+						logFile << "LD D, d8 -- d8 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 2;
+						break;
 					case 0x17: // RLA 
-						logFile << "RLA\n"; break;
+						logFile << "RLA\n"; 
+						pc++;
+						break;
 					case 0x18: // JR s8
-						logFile << "JR s8\n"; break;
+						logFile << "JR s8 -- s8 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 2;
+						break;
 					case 0x19: // ADD HL, DE
-						logFile << "ADD HL, DE\n"; break;
+						logFile << "ADD HL, DE\n";
+						pc++;
+						break;
 					case 0x1A: // LD A, (DE)
-						logFile << "LD A, (DE)\n"; break;
+						logFile << "LD A, (DE)\n";
+						pc++;
+						break;
 					case 0x1B: // DEC DE
-						logFile << "DEC DE\n"; break;
+						logFile << "DEC DE\n";
+						pc++;
+						break;
 					case 0x1C: // INC E
-						logFile << "INC E\n"; break;
+						logFile << "INC E\n"; 
+						pc++;
+						break;
 					case 0x1D: // DEC E
-						logFile << "DEC E\n"; break;
+						logFile << "DEC E\n"; 
+						pc++;
+						break;
 					case 0x1E: // LD E, d8
-						logFile << "LD E, d8\n"; break;
+						logFile << "LD E, d8 -- d8 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 2;
+						break;
 					case 0x1F: // RRA
-						logFile << "RRA\n"; break;
+						logFile << "RRA\n";
+						pc++;
+						break;
 
 					case 0x20: // JR NZ, s8
-						logFile << "JR NZ, s8\n"; break;
+						logFile << "JR NZ, s8 -- s8 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 2;
+						break;
 					case 0x21: // LD HL, d16
-						logFile << "LD HL, d16\n"; break;
+						logFile << "LD HL, d16 -- d16 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 2]) << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 3;
+						break;
 					case 0x22: // LD (HL+), A
-						logFile << "LD (HL+), A\n"; break;
+						logFile << "LD (HL+), A\n";
+						pc++;
+						break;
 					case 0x23: // INC HL
-						logFile << "INC HL\n"; break;
+						logFile << "INC HL\n";
+						pc++;
+						break;
 					case 0x24: // INC H
-						logFile << "INC H\n"; break;
+						logFile << "INC H\n"; 
+						pc++;
+						break;
 					case 0x25: // DEC H
-						logFile << "DEC H\n"; break;
+						logFile << "DEC H\n";
+						pc++;
+						break;
 					case 0x26: // LD H, d8
-						logFile << "LD H, d8\n"; break;
+						logFile << "LD H, d8 -- d8 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 2;
+						break;
 					case 0x27: // DAA 
-						logFile << "DAA\n"; break;
+						logFile << "DAA\n";
+						pc++;
+						break;
 					case 0x28: // JR Z, s8
-						logFile << "JR Z, s8\n"; break;
+						logFile << "JR Z, s8 -- s8 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 2;
+						break;
 					case 0x29: // ADD HL, HL
-						logFile << "ADD HL, HL\n"; break;
+						logFile << "ADD HL, HL\n";
+						pc++;
+						break;
 					case 0x2A: // LD A, (HL+)
-						logFile << "LD A, (HL+)\n"; break;
+						logFile << "LD A, (HL+)\n";
+						pc++;
+						break;
 					case 0x2B: // DEC HL
-						logFile << "DEC HL\n"; break;
+						logFile << "DEC HL\n";
+						pc++;
+						break;
 					case 0x2C: // INC L
-						logFile << "INC L\n"; break;
+						logFile << "INC L\n";
+						pc++;
+						break;
 					case 0x2D: // DEC L
-						logFile << "DEC L\n"; break;
+						logFile << "DEC L\n";
+						pc++;
+						break;
 					case 0x2E: // LD L, d8
-						logFile << "LD L, d8\n"; break;
+						logFile << "LD L, d8 -- d8 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 2;
+						break;
 					case 0x2F: // CPL
-						logFile << "CPL\n"; break;
+						logFile << "CPL\n"; 
+						pc++;
+						break;
 					
 					case 0x30: // JR NC, s8
-						logFile << "JR NC, s8\n"; break;
+						logFile << "JR NC, s8 -- s8 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 2;
+						break;
 					case 0x31: // LD SP, d16
-						logFile << "LD SP, d16\n"; break;
+						logFile << "LD SP, d16 -- d16 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 2]) << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 3;
+						break;
 					case 0x32: // LD (HL-), A
-						logFile << "LD (HL-), A\n"; break;
+						logFile << "LD (HL-), A\n";
+						pc++;
+						break;
 					case 0x33: // INC SP
-						logFile << "INC HL\n"; break;
+						logFile << "INC HL\n";
+						pc++;
+						break;
 					case 0x34: // INC (HL)
-						logFile << "INC (HL)\n"; break;
+						logFile << "INC (HL)\n";
+						pc++;
+						break;
 					case 0x35: // DEC (HL)
-						logFile << "DEC (HL)\n"; break;
+						logFile << "DEC (HL)\n";
+						pc++;
+						break;
 					case 0x36: // LD (HL), d8
-						logFile << "LD (HL), d8\n"; break;
+						logFile << "LD (HL), d8 -- d8 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 2;
+						break;
 					case 0x37: // SCF 
-						logFile << "SCF\n"; break;
+						logFile << "SCF\n"; 
+						pc++;
+						break;
 					case 0x38: // JR C, s8
-						logFile << "JR C, s8\n"; break;
+						logFile << "JR C, s8 -- s8 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 2;
+						break;
 					case 0x39: // ADD HL, SP
-						logFile << "ADD HL, SP\n"; break;
+						logFile << "ADD HL, SP\n"; 
+						pc++; 
+						break;
 					case 0x3A: // LD A, (HL-)
-						logFile << "LD A, (HL-)\n"; break;
+						logFile << "LD A, (HL-)\n";
+						pc++;
+						break;
 					case 0x3B: // DEC SP
-						logFile << "DEC SP\n"; break;
+						logFile << "DEC SP\n";
+						pc++;
+						break;
 					case 0x3C: // INC A
-						logFile << "INC A\n"; break;
+						logFile << "INC A\n";
+						pc++;
+						break;
 					case 0x3D: // DEC A
-						logFile << "DEC A\n"; break;
+						logFile << "DEC A\n"; 
+						pc++;
+						break;
 					case 0x3E: // LD A, d8
-						logFile << "LD A, d8\n"; break;
+						logFile << "LD A, d8 -- d8 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 2;
+						break;
 					case 0x3F: // CCF
-						logFile << "CCF\n"; break;
+						logFile << "CCF\n"; 
+						pc++;
+						break;
 
 					case 0x40: // LD B, B
 						logFile << "LD B, B\n"; break;
