@@ -18,7 +18,7 @@ int gbDisassembler(const char* fileName) {
 		// output memory into log file, trunc is called to clear any previous log
 		std::ofstream logFile("C:\\Users\\Justyn Duthler\\Desktop\\Game-Boy-Emulator\\logs\\disassemblerLog.txt", std::fstream::out | std::fstream::trunc);
 		if (logFile.is_open()) {
-			int pc = 0;	/* program counter, in real gameboy pc starts at 0x0100 */
+			int pc = 0;			/* program counter, in real gameboy pc starts at 0x0100 */
 			while (pc < fileSize) {
 				logFile << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc]) << ": ";
 				switch (fileMem[pc]) {
@@ -47,8 +47,7 @@ int gbDisassembler(const char* fileName) {
 						pc++;
 						break;
 					case 0x06: // LD B, d8
-						logFile << "LD B, d8\n"; 
-						logFile << "LD BC, d16 -- d16 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						logFile << "LD B, d8 -- d8 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
 						pc += 2;
 						break;
 					case 0x07: // RLCA 
@@ -284,407 +283,793 @@ int gbDisassembler(const char* fileName) {
 						break;
 
 					case 0x40: // LD B, B
-						logFile << "LD B, B\n"; break;
+						logFile << "LD B, B\n"; 
+						pc++; 
+						break;
 					case 0x41: // LD B, C
-						logFile << "LD B, C\n"; break;
+						logFile << "LD B, C\n";
+						pc++; 
+						break;
 					case 0x42: // LD B, D
-						logFile << "LD B, D\n"; break;
+						logFile << "LD B, D\n";
+						pc++; 
+						break;
 					case 0x43: // LD B, E
-						logFile << "LD B, E\n"; break;
+						logFile << "LD B, E\n";
+						pc++; 
+						break;
 					case 0x44: // LD B, H
-						logFile << "LD B, H\n"; break;
+						logFile << "LD B, H\n";
+						pc++; 
+						break;
 					case 0x45: // LD B, L
-						logFile << "LD B, L\n"; break;
+						logFile << "LD B, L\n";
+						pc++; 
+						break;
 					case 0x46: // LD B, (HL)
-						logFile << "LD B, (HL)\n"; break;
+						logFile << "LD B, (HL)\n";
+						pc++;
+						break;
 					case 0x47: // LD B, A 
-						logFile << "LD B, A\n"; break;
+						logFile << "LD B, A\n";
+						pc++; 
+						break;
 					case 0x48: // LD C, B
-						logFile << "LD C, B\n"; break;
+						logFile << "LD C, B\n";
+						pc++; 
+						break;
 					case 0x49: // LD C, C
-						logFile << "LD C, C\n"; break;
+						logFile << "LD C, C\n";
+						pc++; 
+						break;
 					case 0x4A: // LD C, D
-						logFile << "LD C, D\n"; break;
+						logFile << "LD C, D\n";
+						pc++; 
+						break;
 					case 0x4B: // LD C, E
-						logFile << "LD C, E\n"; break;
+						logFile << "LD C, E\n";
+						pc++; 
+						break;
 					case 0x4C: // LD C, H
-						logFile << "LD C, H\n"; break;
+						logFile << "LD C, H\n";
+						pc++; 
+						break;
 					case 0x4D: // LD C, L
-						logFile << "LD C, L\n"; break;
+						logFile << "LD C, L\n";
+						pc++; 
+						break;
 					case 0x4E: // LD C, (HL)
-						logFile << "LD C, (HL)\n"; break;
+						logFile << "LD C, (HL)\n";
+						pc++; 
+						break;
 					case 0x4F: // LD C, A
-						logFile << "LD C, A\n"; break;
+						logFile << "LD C, A\n";
+						pc++; 
+						break;
 
 					case 0x50: // LD D, B
-						logFile << "LD D, B\n"; break;
+						logFile << "LD D, B\n";
+						pc++; 
+						break;
 					case 0x51: // LD D, C
-						logFile << "LD D, C\n"; break;
+						logFile << "LD D, C\n";
+						pc++; 
+						break;
 					case 0x52: // LD D, D
-						logFile << "LD D, D\n"; break;
+						logFile << "LD D, D\n";
+						pc++; 
+						break;
 					case 0x53: // LD D, E
-						logFile << "LD D, E\n"; break;
+						logFile << "LD D, E\n";
+						pc++; 
+						break;
 					case 0x54: // LD D, H
-						logFile << "LD D, H\n"; break;
+						logFile << "LD D, H\n";
+						pc++; 
+						break;
 					case 0x55: // LD D, L
-						logFile << "LD D, L\n"; break;
+						logFile << "LD D, L\n";
+						pc++; 
+						break;
 					case 0x56: // LD D, (HL)
-						logFile << "LD D, (HL)\n"; break;
+						logFile << "LD D, (HL)\n";
+						pc++; 
+						break;
 					case 0x57: // LD D, A 
-						logFile << "LD D, A\n"; break;
+						logFile << "LD D, A\n";
+						pc++; 
+						break;
 					case 0x58: // LD E, B
-						logFile << "LD E, B\n"; break;
+						logFile << "LD E, B\n";
+						pc++; 
+						break;
 					case 0x59: // LD E, C
-						logFile << "LD E, C\n"; break;
+						logFile << "LD E, C\n";
+						pc++; 
+						break;
 					case 0x5A: // LD E, D
-						logFile << "LD E, D\n"; break;
+						logFile << "LD E, D\n";
+						pc++; 
+						break;
 					case 0x5B: // LD E, E
-						logFile << "LD E, E\n"; break;
+						logFile << "LD E, E\n";
+						pc++; 
+						break;
 					case 0x5C: // LD E, H
-						logFile << "LD E, H\n"; break;
+						logFile << "LD E, H\n";
+						pc++; 
+						break;
 					case 0x5D: // LD E, L
-						logFile << "LD E, L\n"; break;
+						logFile << "LD E, L\n";
+						pc++; 
+						break;
 					case 0x5E: // LD E, (HL)
-						logFile << "LD E, (HL)\n"; break;
+						logFile << "LD E, (HL)\n";
+						pc++; 
+						break;
 					case 0x5F: // LD E, A
-						logFile << "LD E, A\n"; break;
+						logFile << "LD E, A\n";
+						pc++; 
+						break;
 
 					case 0x60: // LD H, B
-						logFile << "LD H, B\n"; break;
+						logFile << "LD H, B\n";
+						pc++; 
+						break;
 					case 0x61: // LD H, C
-						logFile << "LD H, C\n"; break;
+						logFile << "LD H, C\n";
+						pc++; 
+						break;
 					case 0x62: // LD H, D
-						logFile << "LD H, D\n"; break;
+						logFile << "LD H, D\n";
+						pc++; 
+						break;
 					case 0x63: // LD H, E
-						logFile << "LD H, E\n"; break;
+						logFile << "LD H, E\n";
+						pc++; 
+						break;
 					case 0x64: // LD H, H
-						logFile << "LD H, H\n"; break;
+						logFile << "LD H, H\n";
+						pc++; 
+						break;
 					case 0x65: // LD H, L
-						logFile << "LD H, L\n"; break;
+						logFile << "LD H, L\n";
+						pc++; 
+						break;
 					case 0x66: // LD H, (HL)
-						logFile << "LD H, (HL)\n"; break;
+						logFile << "LD H, (HL)\n";
+						pc++; 
+						break;
 					case 0x67: // LD H, A 
-						logFile << "LD H, A\n"; break;
+						logFile << "LD H, A\n";
+						pc++; 
+						break;
 					case 0x68: // LD L, B
-						logFile << "LD L, B\n"; break;
+						logFile << "LD L, B\n";
+						pc++; 
+						break;
 					case 0x69: // LD L, C
-						logFile << "LD L, C\n"; break;
+						logFile << "LD L, C\n";
+						pc++; 
+						break;
 					case 0x6A: // LD L, D
-						logFile << "LD L, D\n"; break;
+						logFile << "LD L, D\n";
+						pc++; 
+						break;
 					case 0x6B: // LD L, E
-						logFile << "LD L, E\n"; break;
+						logFile << "LD L, E\n";
+						pc++; 
+						break;
 					case 0x6C: // LD L, H
-						logFile << "LD L, H\n"; break;
+						logFile << "LD L, H\n";
+						pc++; 
+						break;
 					case 0x6D: // LD L, L
-						logFile << "LD L, L\n"; break;
+						logFile << "LD L, L\n";
+						pc++; 
+						break;
 					case 0x6E: // LD L, (HL)
-						logFile << "LD L, (HL)\n"; break;
+						logFile << "LD L, (HL)\n";
+						pc++; 
+						break;
 					case 0x6F: // LD L, A
-						logFile << "LD C, A\n"; break;
+						logFile << "LD C, A\n";
+						pc++; 
+						break;
 					
 					case 0x70: // LD (HL), B
-						logFile << "LD (HL), B\n"; break;
+						logFile << "LD (HL), B\n";
+						pc++;
+						break;
 					case 0x71: // LD (HL), C
-						logFile << "LD (HL), C\n"; break;
+						logFile << "LD (HL), C\n";
+						pc++; 
+						break;
 					case 0x72: // LD (HL), D
-						logFile << "LD (HL), D\n"; break;
+						logFile << "LD (HL), D\n";
+						pc++; 
+						break;
 					case 0x73: // LD (HL), E
-						logFile << "LD (HL), E\n"; break;
+						logFile << "LD (HL), E\n";
+						pc++; 
+						break;
 					case 0x74: // LD (HL), H
-						logFile << "LD (HL), H\n"; break;
+						logFile << "LD (HL), H\n";
+						pc++; 
+						break;
 					case 0x75: // LD (HL), L
-						logFile << "LD (HL), L\n"; break;
+						logFile << "LD (HL), L\n";
+						pc++; 
+						break;
 					case 0x76: // HALT
-						logFile << "HALT\n"; break;
+						logFile << "HALT\n";
+						pc++; 
+						break;
 					case 0x77: // LD (HL), A 
-						logFile << "LD (HL), A\n"; break;
+						logFile << "LD (HL), A\n";
+						pc++; 
+						break;
 					case 0x78: // LD A, B
-						logFile << "LD A, B\n"; break;
+						logFile << "LD A, B\n";
+						pc++; 
+						break;
 					case 0x79: // LD A, C
-						logFile << "LD A, C\n"; break;
+						logFile << "LD A, C\n";
+						pc++; 
+						break;
 					case 0x7A: // LD A, D
-						logFile << "LD A, D\n"; break;
+						logFile << "LD A, D\n";
+						pc++; 
+						break;
 					case 0x7B: // LD A, E
-						logFile << "LD A, E\n"; break;
+						logFile << "LD A, E\n";
+						pc++; 
+						break;
 					case 0x7C: // LD A, H
-						logFile << "LD A, H\n"; break;
+						logFile << "LD A, H\n";
+						pc++; 
+						break;
 					case 0x7D: // LD A, L
-						logFile << "LD A, L\n"; break;
+						logFile << "LD A, L\n";
+						pc++; 
+						break;
 					case 0x7E: // LD A, (HL)
-						logFile << "LD A, (HL)\n"; break;
+						logFile << "LD A, (HL)\n";
+						pc++; 
+						break;
 					case 0x7F: // LD A, A
-						logFile << "LD C, A\n"; break;
+						logFile << "LD C, A\n";
+						pc++; 
+						break;
 
 					case 0x80: // ADD A, B
-						logFile << "ADD A, B\n"; break;
+						logFile << "ADD A, B\n";
+						pc++; 
+						break;
 					case 0x81: // ADD A, C
-						logFile << "ADD A, C\n"; break;
+						logFile << "ADD A, C\n";
+						pc++; 
+						break;
 					case 0x82: // ADD A, D
-						logFile << "ADD A, D\n"; break;
+						logFile << "ADD A, D\n";
+						pc++; 
+						break;
 					case 0x83: // ADD A, E
-						logFile << "ADD A, E\n"; break;
+						logFile << "ADD A, E\n";
+						pc++; 
+						break;
 					case 0x84: // ADD A, H
-						logFile << "ADD A, H\n"; break;
+						logFile << "ADD A, H\n";
+						pc++; 
+						break;
 					case 0x85: // ADD A, L
-						logFile << "ADD A, L\n"; break;
+						logFile << "ADD A, L\n";
+						pc++; 
+						break;
 					case 0x86: // ADD A, (HL)
-						logFile << "ADD A, (HL)\n"; break;
+						logFile << "ADD A, (HL)\n";
+						pc++; 
+						break;
 					case 0x87: // ADD A, A 
-						logFile << "ADD A, A\n"; break;
+						logFile << "ADD A, A\n";
+						pc++; 
+						break;
 					case 0x88: // ADC A, B
-						logFile << "ADC A, B\n"; break;
+						logFile << "ADC A, B\n";
+						pc++; 
+						break;
 					case 0x89: // ADC A, C
-						logFile << "ADC A, C\n"; break;
+						logFile << "ADC A, C\n";
+						pc++; 
+						break;
 					case 0x8A: // ADC A, D
-						logFile << "ADC A, D\n"; break;
+						logFile << "ADC A, D\n";
+						pc++; 
+						break;
 					case 0x8B: // ADC A, E
-						logFile << "ADC A, E\n"; break;
+						logFile << "ADC A, E\n";
+						pc++; 
+						break;
 					case 0x8C: // ADC A, H
-						logFile << "ADC A, H\n"; break;
+						logFile << "ADC A, H\n";
+						pc++; 
+						break;
 					case 0x8D: // ADC A, L
-						logFile << "ADC A, L\n"; break;
+						logFile << "ADC A, L\n";
+						pc++; 
+						break;
 					case 0x8E: // ADC A, (HL)
-						logFile << "ADC, (HL)\n"; break;
+						logFile << "ADC A, (HL)\n";
+						pc++; 
+						break;
 					case 0x8F: // ADC A, A
-						logFile << "ADC, A\n"; break;
+						logFile << "ADC A, A\n";
+						pc++; 
+						break;
 
-					case 0x90: // SUB B
-						logFile << "SUB B\n"; break;
-					case 0x91: // SUB C
-						logFile << "SUB C\n"; break;
-					case 0x92: // SUB D
-						logFile << "SUB D\n"; break;
-					case 0x93: // SUB E
-						logFile << "SUB E\n"; break;
-					case 0x94: // SUB H
-						logFile << "SUB H\n"; break;
-					case 0x95: // SUB L
-						logFile << "SUB L\n"; break;
-					case 0x96: // SUB (HL)
-						logFile << "SUB (HL)\n"; break;
-					case 0x97: // SUB A 
-						logFile << "SUB A\n"; break;
+					case 0x90: // SUB A, B
+						logFile << "SUB A, B\n";
+						pc++; 
+						break;
+					case 0x91: // SUB A, C
+						logFile << "SUB A, C\n";
+						pc++; 
+						break;
+					case 0x92: // SUB A, D
+						logFile << "SUB A, D\n";
+						pc++; 
+						break;
+					case 0x93: // SUB A, E
+						logFile << "SUB A, E\n";
+						pc++; 
+						break;
+					case 0x94: // SUB A, H
+						logFile << "SUB A, H\n";
+						pc++; 
+						break;
+					case 0x95: // SUB A, L
+						logFile << "SUB A, L\n";
+						pc++; 
+						break;
+					case 0x96: // SUB A, (HL)
+						logFile << "SUB A, (HL)\n"; 
+						pc++; 
+						break;
+					case 0x97: // SUB A, A 
+						logFile << "SUB A, A\n";
+						pc++; 
+						break;
 					case 0x98: // SBC A, B
-						logFile << "SBC A, B\n"; break;
+						logFile << "SBC A, B\n"; 
+						pc++; 
+						break;
 					case 0x99: // SBC A, C
-						logFile << "SBC A, C\n"; break;
+						logFile << "SBC A, C\n"; 
+						pc++; 
+						break;
 					case 0x9A: // SBC A, D
-						logFile << "SBC A, D\n"; break;
+						logFile << "SBC A, D\n";
+						pc++; 
+						break;
 					case 0x9B: // SBC A, E
-						logFile << "SBC A, E\n"; break;
+						logFile << "SBC A, E\n";
+						pc++; 
+						break;
 					case 0x9C: // SBC A, H
-						logFile << "SBC A, H\n"; break;
+						logFile << "SBC A, H\n";
+						pc++; 
+						break;
 					case 0x9D: // SBC A, L
-						logFile << "SBC A, L\n"; break;
+						logFile << "SBC A, L\n";
+						pc++; 
+						break;
 					case 0x9E: // SBC A, (HL)
-						logFile << "SBC A, (HL)\n"; break;
+						logFile << "SBC A, (HL)\n";
+						pc++; 
+						break;
 					case 0x9F: // SBC A, A
-						logFile << "SBC A, A\n"; break;
+						logFile << "SBC A, A\n";
+						pc++; 
+						break;
 
-					case 0xA0: // AND B
-						logFile << "AND B\n"; break;
-					case 0xA1: // AND C
-						logFile << "AND C\n"; break;
-					case 0xA2: // AND D
-						logFile << "AND D\n"; break;
-					case 0xA3: // AND E
-						logFile << "AND E\n"; break;
-					case 0xA4: // AND H
-						logFile << "SUB H\n"; break;
-					case 0xA5: // AND L
-						logFile << "AND L\n"; break;
-					case 0xA6: // AND (HL)
-						logFile << "AND (HL)\n"; break;
-					case 0xA7: // AND A 
-						logFile << "AND A\n"; break;
-					case 0xA8: // XOR B
-						logFile << "XOR B\n"; break;
-					case 0xA9: // XOR C
-						logFile << "XOR C\n"; break;
-					case 0xAA: // XOR D
-						logFile << "XOR D\n"; break;
-					case 0xAB: // XOR E
-						logFile << "XOR E\n"; break;
-					case 0xAC: // XOR H
-						logFile << "XOR H\n"; break;
-					case 0xAD: // XOR L
-						logFile << "XOR L\n"; break;
-					case 0xAE: // XOR (HL)
-						logFile << "XOR (HL)\n"; break;
-					case 0xAF: // XOR A
-						logFile << "XOR A\n"; break;
+					case 0xA0: // AND A, B
+						logFile << "AND A, B\n";
+						pc++; 
+						break;
+					case 0xA1: // AND A, C
+						logFile << "AND A, C\n";
+						pc++; 
+						break;
+					case 0xA2: // AND A, D
+						logFile << "AND A, D\n";
+						pc++; 
+						break;
+					case 0xA3: // AND A, E
+						logFile << "AND A, E\n";
+						pc++; 
+						break;
+					case 0xA4: // AND A, H
+						logFile << "SUB A, H\n";
+						pc++; 
+						break;
+					case 0xA5: // AND A, L
+						logFile << "AND A, L\n";
+						pc++; 
+						break;
+					case 0xA6: // AND A, (HL)
+						logFile << "AND A, (HL)\n";
+						pc++; 
+						break;
+					case 0xA7: // AND A, A 
+						logFile << "AND A, A\n";
+						pc++; 
+						break;
+					case 0xA8: // XOR A, B
+						logFile << "XOR A, B\n";
+						pc++; 
+						break;
+					case 0xA9: // XOR A, C
+						logFile << "XOR A, C\n";
+						pc++; 
+						break;
+					case 0xAA: // XOR A, D
+						logFile << "XOR A, D\n";
+						pc++; 
+						break;
+					case 0xAB: // XOR A, E
+						logFile << "XOR A, E\n";
+						pc++; 
+						break;
+					case 0xAC: // XOR A, H
+						logFile << "XOR A, H\n";
+						pc++; 
+						break;
+					case 0xAD: // XOR A, L
+						logFile << "XOR A, L\n";
+						pc++; 
+						break;
+					case 0xAE: // XOR A, (HL)
+						logFile << "XOR A, (HL)\n";
+						pc++; 
+						break;
+					case 0xAF: // XOR A, A
+						logFile << "XOR A, A\n";
+						pc++; 
+						break;
 
-					case 0xB0: // OR B
-						logFile << "OR B\n"; break;
-					case 0xB1: // OR C
-						logFile << "OR C\n"; break;
-					case 0xB2: // OR D
-						logFile << "OR D\n"; break;
-					case 0xB3: // OR E
-						logFile << "OR E\n"; break;
-					case 0xB4: // OR H
-						logFile << "OR H\n"; break;
-					case 0xB5: // OR L
-						logFile << "OR L\n"; break;
-					case 0xB6: // OR (HL)
-						logFile << "OR (HL)\n"; break;
-					case 0xB7: // OR A 
-						logFile << "OR A\n"; break;
-					case 0xB8: // CP B
-						logFile << "CP B\n"; break;
-					case 0xB9: // CP C
-						logFile << "CP C\n"; break;
-					case 0xBA: // CP D
-						logFile << "CP D\n"; break;
-					case 0xBB: // CP E
-						logFile << "CP E\n"; break;
-					case 0xBC: // CP H
-						logFile << "CP H\n"; break;
-					case 0xBD: // CP L
-						logFile << "CP L\n"; break;
-					case 0xBE: // CP (HL)
-						logFile << "CP (HL)\n"; break;
-					case 0xBF: // CP A
-						logFile << "CP A\n"; break;
+					case 0xB0: // OR A, B
+						logFile << "OR A, B\n";
+						pc++; 
+						break;
+					case 0xB1: // OR A, C
+						logFile << "OR A, C\n";
+						pc++; 
+						break;
+					case 0xB2: // OR A, D
+						logFile << "OR A, D\n";
+						pc++; 
+						break;
+					case 0xB3: // OR A, E
+						logFile << "OR A, E\n";
+						pc++; 
+						break;
+					case 0xB4: // OR A, H
+						logFile << "OR A, H\n";
+						pc++; 
+						break;
+					case 0xB5: // OR A, L
+						logFile << "OR A, L\n";
+						pc++; 
+						break;
+					case 0xB6: // OR A, (HL)
+						logFile << "OR A, (HL)\n";
+						pc++; 
+						break;
+					case 0xB7: // OR A, A 
+						logFile << "OR A, A\n";
+						pc++; 
+						break;
+					case 0xB8: // CP A, B
+						logFile << "CP A, B\n";
+						pc++; 
+						break;
+					case 0xB9: // CP A, C
+						logFile << "CP A, C\n";
+						pc++; 
+						break;
+					case 0xBA: // CP A, D
+						logFile << "CP A, D\n";
+						pc++; 
+						break;
+					case 0xBB: // CP A, E
+						logFile << "CP A, E\n";
+						pc++; 
+						break;
+					case 0xBC: // CP A, H
+						logFile << "CP A, H\n";
+						pc++; 
+						break;
+					case 0xBD: // CP A, L
+						logFile << "CP A, L\n";
+						pc++; 
+						break;
+					case 0xBE: // CP A, (HL)
+						logFile << "CP A, (HL)\n";
+						pc++; 
+						break;
+					case 0xBF: // CP A, A
+						logFile << "CP A, A\n";
+						pc++; 
+						break;
 
 					case 0xC0: // RET NZ
-						logFile << "RET NZ\n"; break;
+						logFile << "RET NZ\n"; 
+						pc++; 
+						break;
 					case 0xC1: // POP BC
-						logFile << "POP BC\n"; break;
+						logFile << "POP BC\n"; 
+						pc++; 
+						break;
 					case 0xC2: // JP NZ, a16
-						logFile << "JP NZ, a16\n"; break;
-					case 0xC3: // JP NZ, a16
-						logFile << "JP NZ, a16\n"; break;
+						logFile << "JP NZ, a16 -- a16 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 2]) << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 3;
+						break;
+					case 0xC3: // JP a16
+						logFile << "JP a16 -- a16 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 2]) << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 3;
+						break;
 					case 0xC4: // CALL NZ, a16
-						logFile << "CALL NZ, a16\n"; break;
+						logFile << "CALL NZ, a16 -- a16 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 2]) << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 3;
+						break;
 					case 0xC5: // PUSH BC
-						logFile << "PUSH BC\n"; break;
+						logFile << "PUSH BC\n";
+						pc++;
+						break;
 					case 0xC6: // ADD A, d8
-						logFile << "ADD A, d8\n"; break;
+						logFile << "ADD A, d8 -- d8 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 2;
+						break;
 					case 0xC7: // RST 0 
-						logFile << "RST 0\n"; break;
+						logFile << "RST 0\n";
+						pc++;
+						break;
 					case 0xC8: // RET Z
-						logFile << "RET Z\n"; break;
+						logFile << "RET Z\n";
+						pc++;
+						break;
 					case 0xC9: // RET
-						logFile << "RET\n"; break;
+						logFile << "RET\n";
+						pc++;
+						break;
 					case 0xCA: // JP Z, a16
-						logFile << "JP Z, a16\n"; break;
+						logFile << "JP Z, a16 -- a16 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 2]) << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 3;
+						break;
 					case 0xCB: // 16-bit opcodes
-						logFile << "16-bit opcodes\n"; break;
+						logFile << "16-bit opcodes\n"; 
+						pc++;
+						break;
 					case 0xCC: // CALL Z, a16
-						logFile << "CALL Z, a16\n"; break;
+						logFile << "CALL Z, a16 -- a16 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 2]) << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 3;
+						break;
 					case 0xCD: // CALL a16
-						logFile << "CALL a16\n"; break;
+						logFile << "CALL a16 -- a16 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 2]) << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 3;
+						break;
 					case 0xCE: // ADC A, d8
-						logFile << "ADC A, d8\n"; break;
+						logFile << "ADC A, d8 -- d8 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 2;
+						break;
 					case 0xCF: // RST 1
-						logFile << "RST 1\n"; break;
+						logFile << "RST 1\n"; 
+						pc++;
+						break;
 
 					case 0xD0: // RET NC
-						logFile << "RET NC\n"; break;
+						logFile << "RET NC\n"; 
+						pc++;
+						break;
 					case 0xD1: // POP DE
-						logFile << "POP DE\n"; break;
+						logFile << "POP DE\n";
+						pc++;
+						break;
 					case 0xD2: // JP NC, a16
-						logFile << "JP NC, a16\n"; break;
+						logFile << "JP NC, a16 -- a16 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 2]) << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 3;
+						break;
 					case 0xD3: // NO CODE
-						logFile << "NO CODE\n"; break;
+						logFile << "NO CODE\n";
+						pc++; 
+						break;
 					case 0xD4: // CALL NC, a16
-						logFile << "CALL NC, a16\n"; break;
+						logFile << "CALL NC, a16 -- 16 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 2]) << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 3;
+						break;
 					case 0xD5: // PUSH DE
-						logFile << "PUSH DE\n"; break;
+						logFile << "PUSH DE\n"; 
+						pc++;
+						break;
 					case 0xD6: // SUB d8
-						logFile << "SUB d8\n"; break;
+						logFile << "SUB d8 -- d8 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 2;
+						break;
 					case 0xD7: // RST 2 
-						logFile << "RST 2\n"; break;
+						logFile << "RST 2\n";
+						pc++;
+						break;
 					case 0xD8: // RET C
-						logFile << "RET C\n"; break;
+						logFile << "RET C\n"; 
+						pc++;
+						break;
 					case 0xD9: // RETI
-						logFile << "RETI\n"; break;
+						logFile << "RETI\n";
+						pc++;
+						break;
 					case 0xDA: // JP C, a16
-						logFile << "JP C, a16\n"; break;
+						logFile << "JP C, a16 -- a16 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 2]) << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 3;
+						break;
 					case 0xDB: // NO CODE
-						logFile << "NO CODE\n"; break;
+						logFile << "NO CODE\n";
+						pc++; 
+						break;
 					case 0xDC: // CALL C, a16
-						logFile << "CALL C, a16\n"; break;
+						logFile << "CALL C, a16 -- a16 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 2]) << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 3;
+						break;
 					case 0xDD: // NO CODE
-						logFile << "NO CODE\n"; break;
+						logFile << "NO CODE\n";
+						pc++; 
+						break;
 					case 0xDE: // SBC A, d8
-						logFile << "SBC A, d8\n"; break;
+						logFile << "SBC A, d8 -- d8 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 2;
+						break;
 					case 0xDF: // RST 3
-						logFile << "RST 3\n"; break;
+						logFile << "RST 3\n";
+						pc++;
+						break;
 
 					case 0xE0: // LD (a8), A
-						logFile << "LD (a8), A\n"; break;
+						logFile << "LD (a8), A -- a8 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 2;
+						break;
 					case 0xE1: // POP HL
-						logFile << "POP HL\n"; break;
+						logFile << "POP HL\n";
+						pc++;
+						break;
 					case 0xE2: // LD (C), A
-						logFile << "LD (C), A\n"; break;
+						logFile << "LD (C), A\n";
+						pc++;
+						break;
 					case 0xE3: // NO CODE
-						logFile << "NO CODE\n"; break;
+						logFile << "NO CODE\n";
+						pc++; 
+						break;
 					case 0xE4: // NO CODE
-						logFile << "NO CODE\n"; break;
+						logFile << "NO CODE\n";
+						pc++; 
+						break;
 					case 0xE5: // PUSH HL
-						logFile << "PUSH HL\n"; break;
+						logFile << "PUSH HL\n";
+						pc++;
+						break;
 					case 0xE6: // AND d8
-						logFile << "AND d8\n"; break;
+						logFile << "AND d8 -- d8 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 2;
+						break;
 					case 0xE7: // RST 4 
-						logFile << "RST 4\n"; break;
+						logFile << "RST 4\n"; 
+						pc++;
+						break;
 					case 0xE8: // ADD SP, s8
-						logFile << "ADD SP, s8\n"; break;
+						logFile << "ADD SP, s8 -- s8 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 2;
+						break;
 					case 0xE9: // JP HL
-						logFile << "JP HL\n"; break;
+						logFile << "JP HL\n";
+						pc++;
+						break;
 					case 0xEA: // LD (a16), A
-						logFile << "LD (a16), A\n"; break;
+						logFile << "LD (a16), A -- a16 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 2]) << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 3;
+						break;
 					case 0xEB: // NO CODE
-						logFile << "NO CODE\n"; break;
+						logFile << "NO CODE\n";
+						pc++; 
+						break;
 					case 0xEC: // NO CODE
-						logFile << "NO CODE\n"; break;
+						logFile << "NO CODE\n";
+						pc++; 
+						break;
 					case 0xED: // NO CODE
-						logFile << "NO CODE\n"; break;
+						logFile << "NO CODE\n";
+						pc++;
+						break;
 					case 0xEE: // XOR d8
-						logFile << "XOR d8\n"; break;
+						logFile << "XOR d8 -- d8 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 2;
+						break;
 					case 0xEF: // RST 5
-						logFile << "RST 5\n"; break;
+						logFile << "RST 5\n";
+						pc++;
+						break;
 
 					case 0xF0: // LD A, (a8)
-						logFile << "LD A, (a8)\n"; break;
+						logFile << "LD A, (a8) -- a8 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 2;
+						break;
 					case 0xF1: // POP AF
-						logFile << "POP AF\n"; break;
+						logFile << "POP AF\n"; 
+						pc++;
+						break;
 					case 0xF2: // LD A, (C)
-						logFile << "LD A, (C)\n"; break;
+						logFile << "LD A, (C)\n";
+						pc++;
+						break;
 					case 0xF3: // DI
-						logFile << "DI\n"; break;
+						logFile << "DI\n";
+						pc++;
+						break;
 					case 0xF4: // NO CODE
-						logFile << "NO CODE\n"; break;
+						logFile << "NO CODE\n"; 
+						pc++;
+						break;
 					case 0xF5: // PUSH AF
-						logFile << "PUSH AF\n"; break;
+						logFile << "PUSH AF\n";
+						pc++;
+						break;
 					case 0xF6: // OR d8
-						logFile << "OR d8\n"; break;
+						logFile << "OR d8 --d8 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 2;
+						break;
 					case 0xF7: // RST 6 
-						logFile << "RST 6\n"; break;
+						logFile << "RST 6\n";
+						pc++;
+						break;
 					case 0xF8: // LD HL, SP+s8
-						logFile << "LD HL, SP+s8\n"; break;
+						logFile << "LD HL, SP+s8 -- s8 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 2;
+						break;
 					case 0xF9: // LD SP, HL
-						logFile << "LD SP. HL\n"; break;
+						logFile << "LD SP. HL\n";
+						pc++;
+						break;
 					case 0xFA: // LD A, (a16)
-						logFile << "LD A, (a16)\n"; break;
+						logFile << "LD A, (a16) -- a16 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 2]) << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 3;
+						break;
 					case 0xFB: // EI
-						logFile << "EI\n"; break;
+						logFile << "EI\n";
+						pc++;
+						break;
 					case 0xFC: // NO CODE
-						logFile << "NO CODE\n"; break;
+						logFile << "NO CODE\n"; 
+						pc++;
+						break;
 					case 0xFD: // NO CODE
-						logFile << "NO CODE\n"; break;
+						logFile << "NO CODE\n"; 
+						pc++;
+						break;
 					case 0xFE: // CP d8
-						logFile << "CP d8\n"; break;
+						logFile << "CP d8 -- d8 = " << std::setfill('0') << std::setw(2) << std::hex << (0xff & fileMem[pc + 1]) << "\n";
+						pc += 2;
+						break;
 					case 0xFF: // RST 7
-						logFile << "RST 7\n"; break;
+						logFile << "RST 7\n";
+						pc++;
+						break;
 
 					default:
-						logFile << "\n"; break;
+						logFile << "\n"; 
+						pc++;
+						break;
 				}
 			}
 		} else {
-			std::cout << "Cannot open log file\n";
+			std::cout << "Cannot open log file";
 			return 0;
 		}
 		logFile.close();
